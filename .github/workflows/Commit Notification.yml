@@ -4,7 +4,22 @@ on:
     branches:
       - main
 jobs:
-  send_email:
+
+ build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Display directory structure
+      run: ls -la /home/runner/work/test-repo/*
+
+    - name: Run a script
+      run: ./package.json
+      working-directory: /home/runner/work/test-repo
+  
+ send_email:
     runs-on: ubuntu-latest
     steps:
       - name: Send Email Notification
