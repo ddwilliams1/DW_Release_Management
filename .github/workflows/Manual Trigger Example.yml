@@ -6,13 +6,10 @@ on:
       environment:
         description: 'Which environment to deploy to'
         required: true
-        default: 'Production'
+        default: 'Re-Run Action'
         type: choice
         options:
-          - Production
-          - Development
-          - CAT
-          - UAT
+          - Re-Run Action
 
 jobs:
   build:
