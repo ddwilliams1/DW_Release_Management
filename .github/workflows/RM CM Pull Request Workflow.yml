@@ -4,8 +4,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
     branches:
-      #- main
-      - dev
+      - main
       - Release v*.*.*.*
   push:
    tags:
@@ -93,7 +92,7 @@ jobs:
           server_port: 465
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "CM: Release Ready for Ops Deploy - PROD"
-          body: "Project Release is ready for Ops Deployment to PROD: ${{ steps.create_release.outputs.html_url }}"
+          subject: "CM: NARA Project Release Ready for Ops Deploy - PROD"
+          body: "A NARA Project Release is ready for Ops Deployment to PROD environment: ${{ steps.create_release.outputs.html_url }}"
           to: ${{ secrets.EMAIL_USERNAME }}
           from: ${{ secrets.EMAIL_USERNAME }}, #Chandni.Bedi@nara.gov #janice.cobb@nara.gov, #seema.dheman@nara.gov
