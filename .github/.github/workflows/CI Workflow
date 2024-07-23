@@ -1,0 +1,44 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: Add button to manually Re-run the Action
+        required: true
+        default: Re-run Action
+        type: choice
+        options:
+          - Re-run Action
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js 20.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.x'
+
+    - name: Display directory structure
+       run: ls -la /home/runner/work/*
+
+    - name: Install dependencies
+      run: npm install
+      working-directory:  /home/runner/work/test-repo/.github/workflow
+
+    - name: Run build
+      run: npm run build
+
+    - name: Run tests
+      run: npm test
