@@ -85,14 +85,14 @@ jobs:
           draft: false
           prerelease: false
 
-      #- name: Send email notification on release
-        #uses: dawidd6/action-send-mail@v3
-        #with:
-          #server_address: smtp.gmail.com
-          #server_port: 465
-          #username: ${{ secrets.EMAIL_USERNAME }}
-          #password: ${{ secrets.EMAIL_PASSWORD }}
-          #subject: "CM: NARA Project Release Ready for Ops Deploy - PROD"
-          #body: "A NARA Project Release is ready for Ops Deployment to PROD environment: ${{ steps.create_release.outputs.html_url }}"
-          #to: ${{ secrets.EMAIL_USERNAME }}
-          #from: ${{ secrets.EMAIL_USERNAME }}, #Chandni.Bedi@nara.gov #janice.cobb@nara.gov, #seema.dheman@nara.gov
+      - name: Send email notification on release
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "CM: NARA Project Release Ready for Ops Deploy - PROD"
+          body: "A NARA Project Release is ready for Ops Deployment to PROD environment: ${{ steps.create_release.outputs.html_url }}"
+          to: ${{ secrets.EMAIL_USERNAME }}
+          from: ${{ secrets.EMAIL_USERNAME }}, seema.dheman@nara.gov #Chandni.Bedi@nara.gov #janice.cobb@nara.gov, #seema.dheman@nara.gov
